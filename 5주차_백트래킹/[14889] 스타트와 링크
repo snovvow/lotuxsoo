@@ -1,0 +1,24 @@
+import itertools
+n = int(input())
+arr = [i for i in range(n)]
+cases = list(itertools.combinations(arr, int(n/2)))
+for i in range(n):
+  arr[i] = list(map(int, input().split()))
+
+
+min_val = 100*n*n
+for case1 in cases:
+  A = 0
+  B = 0
+  for x in case1:
+    for y in case1:
+      A += arr[x][y]
+
+  case2 = [x for x in range(n) if x not in case1]
+  for x in case2:
+    for y in case2:
+      B += arr[x][y]
+
+  min_val = min(min_val, abs(A-B))
+
+print(min_val)
