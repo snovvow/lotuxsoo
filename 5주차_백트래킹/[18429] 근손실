@@ -1,0 +1,22 @@
+import sys 
+from itertools import permutations
+# itertools.permutations(iterable, r) -> iterable 요소길이 r에 해당하는 순열 리턴 
+
+N, K = list(map(int, input().split()))
+kit = list(map(int, input().split()))
+ans = 0 
+
+for weight in permutations(kit, N): 
+  current = 500
+  flag = True
+  for i in range(N):
+    current += weight[i] # 증가 
+    current -= K # 감소
+    if current < 500:
+      flag = False
+      break
+
+  if flag: 
+    ans += 1
+
+print(ans)
