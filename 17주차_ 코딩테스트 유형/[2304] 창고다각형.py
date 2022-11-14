@@ -33,6 +33,7 @@ height = lst[-1][1]
 for i in range(n-1, idx, -1):
   if height < lst[i-1][1]:
     res += height * (lst[i][0] - lst[i-1][0])
+    height = lst[i-1][1]
   else:
     res += height * (lst[i][0] - lst[i-1][0])
 
